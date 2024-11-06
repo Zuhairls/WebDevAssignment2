@@ -1,9 +1,10 @@
 <% include partials/header.ejs %>
 <% include partials/main_nav.ejs %>
 <div class="container">
-    <h1><%= message || 'An error occurred' %></h1>
-    <h2>Status: <%= error.status || 500 %></h2>
-    <pre><%= error.stack || 'No additional information available.' %></pre>
+
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
 </div>
 <% include partials/bottom_nav.ejs %>
 <% include partials/footer.ejs %>
