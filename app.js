@@ -28,15 +28,20 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // Set locals, providing only the error message and stack trace if in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error')
+  // Render the error page with required variables
+  res.status(err.status || 500).render('error', {
+    title: 'Error Page', // Ensure title is defined
+    message: err.message || 'An error occurred',
+    error: req.app.get('env') === 'development' ? err : {}
+  });
 });
+
 
 module.exports = app;
